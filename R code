@@ -8,4 +8,3 @@
 > ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
 
 > ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin",  x = "1 / Substrate Concentration (1/ppm)", y = "1 / Reaction Velocity (min/counts)",  color = "Treatment State"  )# puromycin-enzyme-kinetics
-Self-directed project emphasizing statisical analysis and visualization of enzyme kinetic relatinship and behavior surrounding Puromycin
