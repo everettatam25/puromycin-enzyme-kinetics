@@ -3,7 +3,7 @@
 
 > install.packages(c("ggplot2", "dplyr"))
 
->data("Puromycin")
+> data("Puromycin")
 
 > ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
 
