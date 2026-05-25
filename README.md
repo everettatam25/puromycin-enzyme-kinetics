@@ -1,2 +1,2 @@
 # puromycin-enzyme-kinetics
-Self-directed project emphasizign statisical analysis and visualization of enzyme kinetic relatinship and behavior surrounding Puromycin
+Self-directed project emphasizing statisical analysis and visualization of enzyme kinetic relatinship and behavior surrounding Puromycin
