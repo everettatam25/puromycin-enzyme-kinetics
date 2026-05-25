@@ -1,7 +1,7 @@
 # Enzyme Kinetics Visualization: Puromycin Data Analysis
 
 ## Project Overview
-Statistical analysis and visuzlation of relationships in enzyme behavior Puromycin
+Self-directed project emphasizing statisical analysis and visualization of enzyme kinetic relationship and behavior surrounding Puromycin
 ## Features
 * Processes enzyme kinetics data from public databases.
 * Generates accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
