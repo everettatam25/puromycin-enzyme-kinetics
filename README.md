@@ -1,2 +1,19 @@
-# puromycin-enzyme-kinetics
-Self-directed project emphasizing statisical analysis and visualization of enzyme kinetic relatinship and behavior surrounding Puromycin
+# Enzyme Kinetics Visualization: Puromycin Data Analysis
+
+## Project Overview
+Statistical analysis and visuzlation of relationships in enzyme behavior Puromycin
+## Features
+* Processes enzyme kinetics data from public databases.
+* Generates accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
+* Computes pharmacokinetic parameters (Vmax, Km).
+
+## Technologies & Tools
+* **Language:** R
+* **Libraries:** `ggplot2` (for visualization), `tidyverse` (for database), `dplyr` (for data manipulation)
+* **Environment:** RStudio 
+
+## Getting Started
+
+## Prerequisites
+* R (version 4.0 or higher)
+* RStudio
