@@ -12,11 +12,11 @@ Self-directed project emphasizing statisical analysis and visualization of enzym
 
 ## Michaelis-Menten Plot
 
-![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
+![Michaelis-Menten Plot](puromycin_michaelis_menten.png/puromycin_michaelis_menten.png)
 
 ## Lineweaver-Burk Plot
 
-![Lineweaver-Burk Plot](puromycin_lineweaver_burk.png)
+![Lineweaver-Burk Plot](puromycin_lineweaver_burk.png/puromycin_lineweaver_burk.png)
 
 ## Technologies & Tools
 * **Language:** R
