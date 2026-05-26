@@ -12,8 +12,6 @@ Self-directed project emphasizing statisical analysis and visualization of enzym
 * **Libraries:** `ggplot2` (for visualization), `tidyverse` (for database), `dplyr` (for data manipulation)
 * **Environment:** RStudio 
 
-## Getting Started
-
 ## Prerequisites
 * R (version 4.0 or higher)
 * RStudio
