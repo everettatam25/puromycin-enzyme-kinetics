@@ -8,3 +8,11 @@
 > ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
 
 > ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin",  x = "1 / Substrate Concentration (1/ppm)", y = "1 / Reaction Velocity (min/counts)",  color = "Treatment State"  )# puromycin-enzyme-kinetics
+
+> puromycin_michaelis_menten.png=ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
+
+> puromycin_lineweaver_burk.png=ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin",  x = "1 / Substrate Concentration (1/ppm)", y = "1 / Reaction Velocity (min/counts)",  color = "Treatment State"  )
+
+> ggsave("puromycin_michaelis_menten.png", width = 7, height = 5, dpi = 300)
+
+> ggsave("puromycin_lineweaver_burk.png", width = 7, height = 5, dpi = 300)
