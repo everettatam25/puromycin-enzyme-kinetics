@@ -2,10 +2,21 @@
 
 ## Project Overview
 Self-directed project emphasizing statisical analysis and visualization of enzyme kinetic relationship and behavior surrounding Puromycin
+
 ## Features
 * Processes enzyme kinetics data from public databases.
 * Generates accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
 * Computes pharmacokinetic parameters (Vmax, Km).
+
+## Figures
+
+## Michaelis-Menten Plot
+
+![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
+
+## Lineweaver-Burk Plot
+
+![Lineweaver-Burk Plot](puromycin_lineweaver_burk.png)
 
 ## Technologies & Tools
 * **Language:** R
