@@ -31,8 +31,8 @@
 
 > michaelis <- qnorm(.995,treated_mean,treated_sd)
 
-> untreated_michaelis <- qnorm(.995,untreated_mean,untreated_sd)
+> untreated_conc_michaelis <- qnorm(.995,untreated_mean,untreated_sd)
 
-> treated_michaelis <- qnorm(.995,treated_mean,treated_sd)
+> treated_conc_michaelis <- qnorm(.995,treated_mean,treated_sd)
 
 > 
