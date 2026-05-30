@@ -92,6 +92,7 @@ untreated_res <- data.frame(state = "untreated", fitted = fitted(untreated_model
 treated_res <- data.frame(state = "treated", fitted = fitted(untreated_model),residuals = residuals(untreated_model))
 residual_df <- bind_rows(treated_res,untreated_res)
 residual_df
-plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals, color = state)) + geom_point(size = 3, alpha = 0.8) +geom_hline(yintercept = 0, linetype = "dashed", color = "black", linewidth = 1) + theme_light() + labs(title = "Residual Analysis: Michaelis-Menten Fit", x = "Fitted Values (Predicted Reaction Velocity)", y = "Residuals (Actual - Predicted)", color = "Treatment State")
+plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals)) + geom_point(size = 3, alpha = 0.8, color = "darkblue") + geom_hline(yintercept = 0, linetype = "dashed", color = "black", linewidth = 1) + theme_light() + labs(title = "Residual Analysis: Michaelis-Menten Fit", x = "Fitted Values (Predicted Reaction Velocity)", y = "Residuals (Actual - Predicted)")
 plot_residuals
 ggsave("puromycin_residuals.png", plot = plot_residuals, width = 7, height = 5, dpi = 300)
+
