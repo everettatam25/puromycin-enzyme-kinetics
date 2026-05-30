@@ -26,6 +26,10 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 
 ![Rate Boxplot](puromycin_rate_boxplot.png)
 
+## Vmax and Km Parameters Puromycin
+
+![Vmax and Km Parameters](puromycin_vmax_km_parameters.png)
+
 ## Technologies & Tools
 * **Language:** R
 * **Libraries:** `ggplot2` (for visualization), `tidyverse` (for database), `dplyr` (for data manipulation)
