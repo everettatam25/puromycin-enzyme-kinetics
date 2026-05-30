@@ -58,7 +58,7 @@ labs(title = "Puromycin Reaction Rate by Treatment State", x = "Treatment State"
 ggsave("puromycin_rate_boxplot.png", plot = plot_rate_box, width = 7, height = 5, dpi = 300)
 
 plot_rate_box
-plot_rate_conc
+plot_conc_box
 
 # 6. Parameters for Vmax & Km 
 treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
