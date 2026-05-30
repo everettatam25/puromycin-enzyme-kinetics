@@ -26,11 +26,11 @@ theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin", x = "1 / Subst
 
 > untreated_mean <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% mean(na.rm=TRUE)
 
+> untreated_sd <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% sd(na.rm=TRUE)
+
 > treated_sd <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% sd(na.rm=TRUE)
 
 > treated_mean <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% mean(na.rm=TRUE)
-
-> untreated_sd <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% sd(na.rm=TRUE)
 
 > untreated_conc_michaelis <- qnorm(.995,untreated_mean,untreated_sd)
 
