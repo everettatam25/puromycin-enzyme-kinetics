@@ -39,14 +39,17 @@ untreated_sd_rate <- Puromycin %>% filter(state == "untreated") %>% pull(rate) %
 treated_mean_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% mean(na.rm = TRUE)
 treated_sd_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
-# 5. Calculate 99.5% Confidence Interval: Rate & Concentration (Assuming Normal Distribution)
-untreated_conc_michaelis <- qnorm(0.9975, untreated_mean, untreated_sd)
-treated_conc_michaelis <- qnorm(0.9975, treated_mean, treated_sd)
-michaelis_rate_treated <- qnorm(0.9975, treated_mean_rate, treated_sd_rate)
-michaelis_rate_untreated <- qnorm(0.9975, untreated_mean_rate, untreated_sd_rate)
+# 5. Calculate 95% Confidence Interval: Rate & Concentration (Assuming Normal Distribution)
+treated_conc <- filter(Puromycin, state == "treated") %>% pull(conc)
+untreated_conc <- filter(Puromycin, state == "untreated") %>% pull(conc)
+untreated_rate <- filter(Puromycin, state == "untreated") %>% pull(rate)
+treated_rate <- filter(Puromycin, state == "treated") %>% pull(rate)
+t.test(untreated_conc)$conf.int
+t.test(treated_conc)$conf.int
+t.test(treated_rate)$conf.int
+t.test(untreated_rate)$conf.int
 
 # 6. Boxplot for Rate & Concentration
-
 plot_conc_box <- ggplot(Puromycin, aes(x = state, y = conc, fill = state)) + geom_boxplot(alpha = 0.7) + 
 theme_light() + labs(title = "Puromycin Substrate Concentration by Treatment State", x = "Treatment State", y = "Substrate Concentration")
 
