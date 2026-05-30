@@ -46,5 +46,11 @@ michaelis_rate_treated <- qnorm(0.9975, treated_mean_rate, treated_sd_rate)
 michaelis_rate_untreated <- qnorm(0.9975, untreated_mean_rate, untreated_sd_rate)
 
 #Calculate 99.5% Confidence Inverval: Vmax & Km (Assuming Normal Distribution)
-> treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
-> untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
+treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
+untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
+treated_parmas <- coef(treated_model)
+treated_Km <- treated_params["Km"]
+treated_Vmax <- treated_params["Vmax"]
+untreated_parmas <- coef(untreated_model)
+untreated_Km <- untreated_params["Km"]
+untreated_Vmax <- untreated_params["Vmax"]
