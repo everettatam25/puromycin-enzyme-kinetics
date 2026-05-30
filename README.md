@@ -12,7 +12,7 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 
 ## Michaelis–Menten Plot Puromycin
 
-![Michaelis-Menten Plot](puromycin_menten.png)
+![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
 
 ## Lineweaver–Burk Plot Puromycin
 
