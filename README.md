@@ -30,6 +30,10 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 
 ![Vmax and Km Parameters](puromycin_vmax_km_parameters.png)
 
+## Puromycin Michaelis-Menten Residual Plot
+
+![Michaelis Menten Residual Plot](puromycin_residuals.png)
+
 ## Technologies & Tools
 * **Language:** R
 * **Libraries:** `ggplot2` (for visualization), `tidyverse` (for database), `dplyr` (for data manipulation)
