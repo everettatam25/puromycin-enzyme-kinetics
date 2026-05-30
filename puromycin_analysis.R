@@ -89,7 +89,7 @@ ggsave("puromycin_vmax_km_parameters.png", plot = plot_parameters, width = 7, he
 
 # 7. Residual Plot (Accuracy)
 untreated_res <- data.frame(state = "untreated", fitted = fitted(untreated_model),residuals = residuals(untreated_model))
-treated_res <- data.frame(state = "treated", fitted = fitted(untreated_model),residuals = residuals(untreated_model))
+treated_res <- data.frame(state = "treated", fitted = fitted(treated_model),residuals = residuals(treated_model))
 residual_df <- bind_rows(treated_res,untreated_res)
 residual_df
 plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals)) + geom_point(size = 3, alpha = 0.8, color = "darkblue") + geom_hline(yintercept = 0, linetype = "dashed", color = "black", linewidth = 1) + theme_light() + labs(title = "Residual Analysis: Michaelis-Menten Fit", x = "Fitted Values (Predicted Reaction Velocity)", y = "Residuals (Actual - Predicted)")
