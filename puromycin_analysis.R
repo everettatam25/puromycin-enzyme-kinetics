@@ -96,3 +96,8 @@ plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals)) + geom_poi
 plot_residuals
 ggsave("puromycin_residuals.png", plot = plot_residuals, width = 7, height = 5, dpi = 300)
 
+# 8. Root Mean Square Error (RMSE)
+treated_rmse <- sqrt(mean(residuals(treated_model)^2))
+untreated_rmse <- sqrt(mean(residuals(untreated_model)^2))
+treated_rmse
+untreated_rmse
