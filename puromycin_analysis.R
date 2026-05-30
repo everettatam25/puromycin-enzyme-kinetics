@@ -59,3 +59,16 @@ cat("untreated Km:", untreated_Km,"\n")
 cat("untreated Vmax:", untreated_Vmax,"\n")
 cat("treated Km:", treated_Km,"\n")
 cat("treated Vmax:", treated_Vmax,"\n")
+
+plot_conc_box <- ggplot(Puromycin, aes(x = state, y = conc, fill = state)) + geom_boxplot(alpha = 0.7) + 
+theme_light() + labs(title = "Puromycin Substrate Concentration by Treatment State", x = "Treatment State", y = "Substrate Concentration")
+
+ggsave("puromycin_conc_boxplot.png", plot = plot_conc_box, width = 7, height = 5, dpi = 300)
+
+plot_rate_box <- ggplot(Puromycin, aes(x = state, y = rate, fill = state)) + geom_boxplot(alpha = 0.7) + theme_light() + 
+labs(title = "Puromycin Reaction Rate by Treatment State", x = "Treatment State",y = "Reaction Velocity")
+
+ggsave("puromycin_rate_boxplot.png", plot = plot_rate_box, width = 7, height = 5, dpi = 300)
+
+plot_rate_box
+plot_rate_conc
