@@ -60,7 +60,7 @@ ggsave("puromycin_rate_boxplot.png", plot = plot_rate_box, width = 7, height = 5
 plot_rate_box
 plot_rate_conc
 
-# 6. Box plot for Vmax & Km 
+# 6. Parameters for Vmax & Km 
 treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
 untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
 treated_params <- coef(treated_model)
@@ -75,3 +75,11 @@ cat("untreated Vmax:", untreated_Vmax,"\n")
 cat("treated Km:", treated_Km,"\n")
 cat("treated Vmax:", treated_Vmax,"\n")
 
+parameter_df <- tibble(state = c("treated", "untreated", "treated", "untreated"), parameter = c("Vmax", "Vmax", "Km", "Km"), 
+value = c(treated_Vmax, untreated_Vmax, treated_Km, untreated_Km))
+
+plot_parameters <- ggplot(parameter_df, aes(x = state, y = value, fill = state)) + geom_col(width = 0.6) + facet_wrap(~ parameter, scales = "free_y") + theme_light() + 
+labs( title = "Estimated Michaelis-Menten Parameters", x = "Treatment State", y = "Estimated Value")
+
+plot_parameters
+ggsave("puromycin_vmax_km_parameters.png", plot = plot_parameters, width = 7, height = 5, dpi = 300)
