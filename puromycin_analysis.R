@@ -9,29 +9,18 @@ data("Puromycin")
 
 # 2. Michaelis-Menten Plot (Nonlinear Regression)
 plot_mm <- ggplot(data = Puromycin, mapping = aes(x = conc, y = rate, color = state)) +
-  geom_point(size = 2) +
-  geom_smooth(method = "nls", 
-              formula = y ~ (Vmax * x) / (Km + x), 
-              start = list(Vmax = 200, Km = 0.1), 
-              se = FALSE) + 
-  theme_light() + 
-  labs(title = "Enzyme Kinetics: Puromycin", 
-       x = "Substrate Concentration (ppm)", 
-       y = "Reaction Velocity (counts/min/min)", 
-       color = "Treatment State")
+geom_point(size = 2) + geom_smooth(method = "nls", formula = y ~ (Vmax * x) / (Km + x), 
+start = list(Vmax = 200, Km = 0.1), se = FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", 
+x = "Substrate Concentration (ppm)", y = "Reaction Velocity (counts/min/min)", color = "Treatment State")
 
 # Save Michaelis-Menten plot
 ggsave("puromycin_michaelis_menten.png", plot = plot_mm, width = 7, height = 5, dpi = 300)
 
 # 3. Lineweaver-Burk Plot (Linear Regression)
-plot_lb <- ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) +
-  geom_point(size = 3) +
-  geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + 
-  theme_light() + 
-  labs(title = "Lineweaver-Burk Plot: Puromycin", 
-       x = "1 / Substrate Concentration (1/ppm)", 
-       y = "1 / Reaction Velocity (min/counts)", 
-       color = "Treatment State")
+plot_lb <- ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + 
+geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + theme_light() + 
+labs(title = "Lineweaver-Burk Plot: Puromycin", x = "1 / Substrate Concentration (1/ppm)", 
+y = "1 / Reaction Velocity (min/counts)", color = "Treatment State")
 
 # Save Lineweaver-Burk plot
 ggsave("puromycin_lineweaver_burk.png", plot = plot_lb, width = 7, height = 5, dpi = 300)
