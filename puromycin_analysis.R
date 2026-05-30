@@ -40,7 +40,7 @@ treated_mean_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>%
 treated_sd_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
 # Calculate 99.5th Percentiles (Assuming Normal Distribution)
-untreated_conc_michaelis <- qnorm(0.995, untreated_mean, untreated_sd)
-treated_conc_michaelis <- qnorm(0.995, treated_mean, treated_sd)
-michaelis_rate_treated <- qnorm(0.995, treated_mean_rate, treated_sd_rate)
-michaelis_rate_untreated <- qnorm(0.995, untreated_mean_rate, untreated_sd_rate)
+untreated_conc_michaelis <- qnorm(0.9975, untreated_mean, untreated_sd)
+treated_conc_michaelis <- qnorm(0.9975, treated_mean, treated_sd)
+michaelis_rate_treated <- qnorm(0.9975, treated_mean_rate, treated_sd_rate)
+michaelis_rate_untreated <- qnorm(0.9975, untreated_mean_rate, untreated_sd_rate)
