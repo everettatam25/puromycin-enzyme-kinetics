@@ -1,51 +1,57 @@
-### Installation & Execution
-> library(tidyverse)
+# Enzyme Kinetics Analysis: Puromycin
 
-> install.packages(c("ggplot2", "dplyr"))
+# 1. Installation & Setup
+# install.packages(c("ggplot2", "dplyr"))
+library(tidyverse)
 
-> data("Puromycin")
+# Load built-in dataset
+data("Puromycin")
 
-> ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", 
-formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", 
-x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
+# 2. Michaelis-Menten Plot (Nonlinear Regression)
+plot_mm <- ggplot(data = Puromycin, mapping = aes(x = conc, y = rate, color = state)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "nls", 
+              formula = y ~ (Vmax * x) / (Km + x), 
+              start = list(Vmax = 200, Km = 0.1), 
+              se = FALSE) + 
+  theme_light() + 
+  labs(title = "Enzyme Kinetics: Puromycin", 
+       x = "Substrate Concentration (ppm)", 
+       y = "Reaction Velocity (counts/min/min)", 
+       color = "Treatment State")
 
-> ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", 
-se = FALSE, fullrange = TRUE) + theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin",  x = "1 / Substrate Concentration (1/ppm)", 
-y = "1 / Reaction Velocity (min/counts)",  color = "Treatment State"  )# puromycin-enzyme-kinetics
+# Save Michaelis-Menten plot
+ggsave("puromycin_michaelis_menten.png", plot = plot_mm, width = 7, height = 5, dpi = 300)
 
-> puromycin_michaelis_menten.png=ggplot(data = Puromycin,mapping = aes(x = conc,y = rate, color = state))+geom_point(size = 2)+geom_smooth(method="nls", 
-formula = y ~ (Vmax * x) / (Km + x), start = list(Vmax = 200, Km = 0.1), se=FALSE) + theme_light() + labs(title = "Enzyme Kinetics: Puromycin", 
-x = "Substrate Concentratoin(ppm)", y = "Reaction Velocity(counts/min/min)", color = "Treatment State")
+# 3. Lineweaver-Burk Plot (Linear Regression)
+plot_lb <- ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + 
+  theme_light() + 
+  labs(title = "Lineweaver-Burk Plot: Puromycin", 
+       x = "1 / Substrate Concentration (1/ppm)", 
+       y = "1 / Reaction Velocity (min/counts)", 
+       color = "Treatment State")
 
-> puromycin_lineweaver_burk.png=ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + 
-theme_light() + labs(  title = "Lineweaver-Burk Plot: Puromycin", x = "1 / Substrate Concentration (1/ppm)", y = "1 / Reaction Velocity (min/counts)",  color = "Treatment State"  )
+# Save Lineweaver-Burk plot
+ggsave("puromycin_lineweaver_burk.png", plot = plot_lb, width = 7, height = 5, dpi = 300)
 
-> ggsave("puromycin_michaelis_menten.png", width = 7, height = 5, dpi = 300)
+# 4. Statistical Summary & Quantile Analysis
+# Calculate Means and Standard Deviations
+untreated_mean <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% mean(na.rm = TRUE)
+untreated_sd <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% sd(na.rm = TRUE)
 
-> ggsave("puromycin_lineweaver_burk.png", width = 7, height = 5, dpi = 300)
+treated_mean <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% mean(na.rm = TRUE)
+treated_sd <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% sd(na.rm = TRUE)
 
-> untreated_mean <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% mean(na.rm=TRUE)
+untreated_mean_rate <- Puromycin %>% filter(state == "untreated") %>% pull(rate) %>% mean(na.rm = TRUE)
+untreated_sd_rate <- Puromycin %>% filter(state == "untreated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
-> untreated_sd <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% sd(na.rm=TRUE)
+treated_mean_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% mean(na.rm = TRUE)
+treated_sd_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
-> treated_sd <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% sd(na.rm=TRUE)
-
-> treated_mean <- Puromycin %>% filter(state == "treated") %>% pull(conc) %>% mean(na.rm=TRUE)
-
-> untreated_conc_michaelis <- qnorm(.995,untreated_mean,untreated_sd)
-
-> treated_conc_michaelis <- qnorm(.995,treated_mean,treated_sd)
-
-> untreated_mean_rate <- Puromycin %>% filter (state == "untreated") %>% pull(rate) %>% mean(na.rm=TRUE)
-
-> treated_mean_rate <- Puromycin %>% filter (state == "treated") %>% pull(rate) %>% mean(na.rm=TRUE)
-
-> untreated_sd_rate <- Puromycin %>% filter (state == "untreated") %>% pull(rate) %>% sd(na.rm=TRUE)
-
-> treated_sd_rate <- Puromycin %>% filter (state == "treated") %>% pull(rate) %>% sd(na.rm=TRUE)
-
-> michaelis_conc <- qnorm(.995, treated_mean_rate, treated_sd_rate)
-
-> michaelis_rate_treated <- qnorm(.995, treated_mean_rate, treated_sd_rate)
-
-> michaelis_rate_untreated <- qnorm(.995, untreated_mean_rate, untreated_sd_rate)
+# Calculate 99.5th Percentiles (Assuming Normal Distribution)
+untreated_conc_michaelis <- qnorm(0.995, untreated_mean, untreated_sd)
+treated_conc_michaelis <- qnorm(0.995, treated_mean, treated_sd)
+michaelis_rate_treated <- qnorm(0.995, treated_mean_rate, treated_sd_rate)
+michaelis_rate_untreated <- qnorm(0.995, untreated_mean_rate, untreated_sd_rate)
