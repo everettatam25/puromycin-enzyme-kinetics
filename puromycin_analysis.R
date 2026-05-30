@@ -55,3 +55,7 @@ treated_Vmax <- treated_params["Vmax"]
 untreated_params <- coef(untreated_model)
 untreated_Km <- untreated_params["Km"]
 untreated_Vmax <- untreated_params["Vmax"]
+cat("untreated Km:", untreated_Km,"\n")
+cat("untreated Vmax:", untreated_Vmax,"\n")
+cat("treated Km:", treated_Km,"\n")
+cat("treated Vmax:", treated_Vmax,"\n")
