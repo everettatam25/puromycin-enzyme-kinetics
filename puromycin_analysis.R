@@ -49,9 +49,9 @@ michaelis_rate_untreated <- qnorm(0.9975, untreated_mean_rate, untreated_sd_rate
 treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
 untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
 treated_params <- coef(treated_model)
-untrated_paams <- coef(untreated_model)
+untreated_paams <- coef(untreated_model)
 treated_Km <- treated_params["Km"]
 treated_Vmax <- treated_params["Vmax"]
-untreated_parmas <- coef(untreated_model)
+untreated_params <- coef(untreated_model)
 untreated_Km <- untreated_params["Km"]
 untreated_Vmax <- untreated_params["Vmax"]
