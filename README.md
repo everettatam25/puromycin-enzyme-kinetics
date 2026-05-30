@@ -10,13 +10,21 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 
 ## Figures
 
-## Michaelis–Menten Plot
+## Michaelis–Menten Plot Puromycin
 
 ![Michaelis-Menten Plot](puromycin_menten.png)
 
-## Lineweaver–Burk Plot
+## Lineweaver–Burk Plot Puromycin
 
 ![Lineweaver-Burk Plot](puromycin_lineweaver_burk.png)
+
+## Concentratoin Boxplot Puromycin
+
+![Concentration Boxplot](puromycin_conc_boxplot.png)
+
+## Rate Boxplot Puromycin
+
+![Rate Boxplot](puromycin_rate_boxplot.png)
 
 ## Technologies & Tools
 * **Language:** R
