@@ -39,13 +39,13 @@ untreated_sd_rate <- Puromycin %>% filter(state == "untreated") %>% pull(rate) %
 treated_mean_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% mean(na.rm = TRUE)
 treated_sd_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
-# Calculate 99.5% Confidence Interval: Rate & Conc. (Assuming Normal Distribution)
+# 5. Calculate 99.5% Confidence Interval: Rate & Conc. (Assuming Normal Distribution)
 untreated_conc_michaelis <- qnorm(0.9975, untreated_mean, untreated_sd)
 treated_conc_michaelis <- qnorm(0.9975, treated_mean, treated_sd)
 michaelis_rate_treated <- qnorm(0.9975, treated_mean_rate, treated_sd_rate)
 michaelis_rate_untreated <- qnorm(0.9975, untreated_mean_rate, untreated_sd_rate)
 
-#Calculate 99.5% Confidence Inverval: Vmax & Km (Assuming Normal Distribution)
+# 6. Calculate 99.5% Confidence Inverval: Vmax & Km (Assuming Normal Distribution)
 treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
 untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
 treated_params <- coef(treated_model)
