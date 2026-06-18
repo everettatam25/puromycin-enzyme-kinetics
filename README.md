@@ -6,7 +6,7 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 ## Features
 * Process enzyme kinetics data from public databases.
 * Generate accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
-* Compute 99.5% confidence inverval for pharmacokinetic parameters (Vmax, Km).
+* Compute 95% confidence inverval for pharmacokinetic parameters (Vmax, Km).
 
 ## Figures
 
