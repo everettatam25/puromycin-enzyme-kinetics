@@ -26,7 +26,7 @@ color = "Treatment State")
 # Save Lineweaver-Burk plot
 ggsave("puromycin_lineweaver_burk.png", plot = plot_lb, width = 7, height = 5, dpi = 300)
 
-# 4. Statistical Summary & Quantile Analysis
+# 4. Descriptive Statistical Summary
 # Calculate Means and Standard Deviations
 untreated_mean <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% mean(na.rm = TRUE)
 untreated_sd <- Puromycin %>% filter(state == "untreated") %>% pull(conc) %>% sd(na.rm = TRUE)
