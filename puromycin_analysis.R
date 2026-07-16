@@ -2,7 +2,7 @@
 
 # 1. Installation & Setup
 
-# install.packages(c("ggplot2", "dplyr", "tibble"))
+install.packages(c("ggplot2", "dplyr", "tibble"))
 library(ggplot2)
 library(dplyr)
 library(tibble)
