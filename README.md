@@ -8,8 +8,6 @@ Self-directed project emphasizing statistical analysis and visualization of enzy
 * Generate accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
 * Compute 95% confidence inverval for pharmacokinetic parameters (Vmax, Km).
 
-## Figures
-
 ## Michaelis–Menten Plot Puromycin
 
 ![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
