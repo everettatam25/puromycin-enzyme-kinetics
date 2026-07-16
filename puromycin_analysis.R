@@ -42,15 +42,22 @@ untreated_sd_rate <- Puromycin %>% filter(state == "untreated") %>% pull(rate) %
 treated_mean_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% mean(na.rm = TRUE)
 treated_sd_rate <- Puromycin %>% filter(state == "treated") %>% pull(rate) %>% sd(na.rm = TRUE)
 
-# 5. Calculate 95% Confidence Interval: Rate & Concentration (Assuming Normal Distribution)
+# 5. Calculate 95% Confidence Interval: Rate & Concentration
 treated_conc <- filter(Puromycin, state == "treated") %>% pull(conc)
 untreated_conc <- filter(Puromycin, state == "untreated") %>% pull(conc)
 untreated_rate <- filter(Puromycin, state == "untreated") %>% pull(rate)
 treated_rate <- filter(Puromycin, state == "treated") %>% pull(rate)
+
 t.test(untreated_conc)$conf.int
 t.test(treated_conc)$conf.int
 t.test(treated_rate)$conf.int
-t.test(untreated_rate)$conf.int
+t.test(untrea# 95% Confidence Intervals for Vmax and Km
+
+treated_ci <- confint(treated_model)
+untreated_ci <- confint(untreated_model)
+
+print(treated_ci)
+print(untreated_ci)ted_rate)$conf.int
 
 # 6. Boxplot for Rate & Concentration
 plot_conc_box <- ggplot(Puromycin, aes(x = state, y = conc, fill = state)) + geom_boxplot(alpha = 0.7) + 
@@ -100,7 +107,7 @@ labs(title = "Residual Diagnostics: Michaelis–Menten Models", x = "Fitted Reac
 print(plot_residuals)
 
 ggsave(filename = "puromycin_residuals.png", plot = plot_residuals, width = 8, height = 5, dpi = 300)
-# 8. Root Mean Square Error (RMSE)
+# 9. Root Mean Square Error (RMSE)
 treated_rmse <- sqrt(mean(residuals(treated_model)^2))
 untreated_rmse <- sqrt(mean(residuals(untreated_model)^2))
 treated_rmse
