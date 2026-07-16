@@ -1,4 +1,4 @@
-## Enzyme Kinetics Analysis: Puromycin
+### Enzyme Kinetics Analysis: Puromycin
 ## Project Overview
 
 A self-directed R project analyzing enzyme-kinetics data from R’s built-in Puromycin dataset. The project compares treated and untreated samples using Michaelis–Menten nonlinear regression, Lineweaver–Burk visualization, parameter estimation, descriptive statistics, residual diagnostics, and root mean square error.
