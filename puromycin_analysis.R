@@ -91,9 +91,10 @@ ggsave("puromycin_vmax_km_parameters.png", plot = plot_parameters, width = 7, he
 
 # 8. Residual Diagnostics
 
-residual_df <- bind_rows(data.frame(fitted = fitted(treated_model), residuals = residuals(treated_model), state = "Treated"), data.frame(fitted = fitted(untreated_model), residuals = residuals(untreated_model),
-state = "Untreated"))
-plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals, color = state)) + geom_point(size = 3, alpha = 0.8) + geom_hline(yintercept = 0, linetype = "dashed", linewidth = 0.8) + facet_wrap(~state) + theme_light() +
+residual_df <- bind_rows(data.frame(fitted = fitted(treated_model), residuals = residuals(treated_model), state = "Treated"), 
+data.frame(fitted = fitted(untreated_model), residuals = residuals(untreated_model), state = "Untreated"))
+plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals, color = state)) + geom_point(size = 3, alpha = 0.8) + 
+geom_hline(yintercept = 0, linetype = "dashed", linewidth = 0.8) + facet_wrap(~state) + theme_light() +
 labs(title = "Residual Diagnostics: Michaelis–Menten Models", x = "Fitted Reaction Velocity", y = "Residual (Observed - Fitted)", color = "Treatment State")
 
 print(plot_residuals)
