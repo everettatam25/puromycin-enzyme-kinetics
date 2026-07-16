@@ -19,12 +19,10 @@ x = "Substrate Concentration (ppm)", y = "Reaction Velocity (counts/min/min)", c
 # Save Michaelis-Menten plot
 ggsave("puromycin_michaelis_menten.png", plot = plot_mm, width = 7, height = 5, dpi = 300)
 
-# 3. Lineweaver-Burk Plot (Linear Regression)
-plot_lb <- ggplot(data = Puromycin, mapping = aes(x = 1/conc, y = 1/rate, color = state)) + 
-geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE, fullrange = TRUE) + theme_light() + 
-labs(title = "Lineweaver-Burk Plot: Puromycin", x = "1 / Substrate Concentration (1/ppm)", 
-y = "1 / Reaction Velocity (min/counts)", color = "Treatment State")
-
+# 3. Lineweaver-Burk Plot
+plot_lb <- ggplot(Puromycin,aes(x = 1 / conc, y = 1 / rate, color = state)) + geom_point(size = 3) + geom_smooth(method = "lm", se = FALSE) + theme_light() + 
+labs( title = "Lineweaver-Burk Plot: Puromycin", x = "1 / Substrate Concentration (1/ppm)", y = expression("1 / Reaction Velocity (min"^2*"/count)"), 
+color = "Treatment State")
 # Save Lineweaver-Burk plot
 ggsave("puromycin_lineweaver_burk.png", plot = plot_lb, width = 7, height = 5, dpi = 300)
 
@@ -110,5 +108,5 @@ ggsave(filename = "puromycin_residuals.png", plot = plot_residuals, width = 8, h
 # 9. Root Mean Square Error (RMSE)
 treated_rmse <- sqrt(mean(residuals(treated_model)^2))
 untreated_rmse <- sqrt(mean(residuals(untreated_model)^2))
-treated_rmse
-untreated_rmse
+cat("Treated RMSE:", treated_rmse, "\n")
+cat("Untreated RMSE:", untreated_rmse, "\n")
