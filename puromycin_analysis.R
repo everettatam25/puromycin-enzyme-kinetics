@@ -54,45 +54,27 @@ ggsave("puromycin_rate_boxplot.png", plot = plot_rate_box, width = 7, height = 5
 plot_rate_box
 plot_conc_box
 
-# 6. Parameters for Vmax & Km 
+# 6. Estimate Vmax and Km
 treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
 untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"), start = list(Vmax = 200, Km = 0.1))
-treated_params <- coef(treated_model)
-treated_Km <- treated_params["Km"]
-treated_Vmax <- treated_params["Vmax"]
-untreated_params <- coef(untreated_model)
-untreated_Km <- untreated_params["Km"]
-untreated_Vmax <- untreated_params["Vmax"]
-cat("untreated Km:", untreated_Km,"\n")
-cat("untreated Vmax:", untreated_Vmax,"\n")
-cat("treated Km:", treated_Km,"\n")
-cat("treated Vmax:", treated_Vmax,"\n")
 
-parameter_df <- tibble(state = c("treated", "untreated", "treated", "untreated"), parameter = c("Vmax", "Vmax", "Km", "Km"), 
-value = c(treated_Vmax, untreated_Vmax, treated_Km, untreated_Km))
-
-plot_parameters <- ggplot(parameter_df, aes(x = state, y = value, fill = state)) + geom_col(width = 0.6) + facet_wrap(~ parameter, scales = "free_y") + theme_light() + 
-labs( title = "Estimated Michaelis-Menten Parameters", x = "Treatment State", y = "Estimated Value")
-
-plot_parameters
-ggsave("puromycin_vmax_km_parameters.png", plot = plot_parameters, width = 7, height = 5, dpi = 300)
-
-# 7. Parameters for Vmax & Km
-treated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "treated"), start = list(Vmax = 200, Km = 0.1))
-untreated_model <- nls(rate ~ (Vmax * conc) / (Km + conc), data = filter(Puromycin, state == "untreated"),start = list(Vmax = 200, Km = 0.1))
-
-# 95% Confidence Intervals for Vmax and Km
+# 95% confidence intervals for Vmax and Km
 treated_ci <- confint(treated_model)
 untreated_ci <- confint(untreated_model)
 
+cat("\nTreated parameter confidence intervals:\n")
 print(treated_ci)
+
+cat("\nUntreated parameter confidence intervals:\n")
 print(untreated_ci)
 
+# Extract parameter estimates
 treated_params <- coef(treated_model)
 untreated_params <- coef(untreated_model)
 
 treated_Km <- treated_params["Km"]
 treated_Vmax <- treated_params["Vmax"]
+
 untreated_Km <- untreated_params["Km"]
 untreated_Vmax <- untreated_params["Vmax"]
 
@@ -101,19 +83,35 @@ cat("Untreated Vmax:", untreated_Vmax, "\n")
 cat("Treated Km:", treated_Km, "\n")
 cat("Treated Vmax:", treated_Vmax, "\n")
 
-parameter_df <- tibble(state = c("treated", "untreated", "treated", "untreated"), parameter = c("Vmax", "Vmax", "Km", "Km"),
-value = c(treated_Vmax, untreated_Vmax, treated_Km, untreated_Km))
+# Create parameter comparison table
+parameter_df <- tibble(state = c("treated", "untreated", "treated", "untreated"), parameter = c("Vmax", "Vmax", "Km", "Km"), value = c(treated_Vmax,
+untreated_Vmax,treated_Km,untreated_Km))
 
+# Plot parameter estimates
 plot_parameters <- ggplot(parameter_df, aes(x = state, y = value, fill = state)) +
-geom_col(width = 0.6) + facet_wrap(~parameter, scales = "free_y") + theme_light() + labs(title = "Estimated Michaelis-Menten Parameters",
-x = "Treatment State", y = "Estimated Value")
+geom_col(width = 0.6) + facet_wrap(~parameter, scales = "free_y") + theme_light() + 
+labs(title = "Estimated Michaelis-Menten Parameters", x = "Treatment State", y = "Estimated Value")
 
 print(plot_parameters)
 
 ggsave("puromycin_vmax_km_parameters.png", plot = plot_parameters, width = 7, height = 5, dpi = 300)
 
-# 8. Root Mean Square Error (RMSE)
+# 7. Residual Diagnostics
+residual_df <- bind_rows(data.frame(fitted = fitted(treated_model), residuals = residuals(treated_model),
+state = "Treated"), data.frame(fitted = fitted(untreated_model), residuals = residuals(untreated_model), state = "Untreated"))
+
+plot_residuals <- ggplot(residual_df, aes(x = fitted, y = residuals, color = state)) + geom_point(size = 3, alpha = 0.8) + 
+geom_hline(yintercept = 0, linetype = "dashed", linewidth = 0.8) + facet_wrap(~state) + theme_light() + labs(title = "Residual Diagnostics: Michaelis-Menten Models",
+x = "Fitted Reaction Velocity", y = "Residual (Observed - Fitted)", color = "Treatment State")
+
+print(plot_residuals)
+
+ggsave("puromycin_residuals.png", plot = plot_residuals, width = 8, height = 5, dpi = 300)
+
+# 8. Root Mean Square Error
+
 treated_rmse <- sqrt(mean(residuals(treated_model)^2))
 untreated_rmse <- sqrt(mean(residuals(untreated_model)^2))
+
 cat("Treated RMSE:", treated_rmse, "\n")
 cat("Untreated RMSE:", untreated_rmse, "\n")
