@@ -1,18 +1,17 @@
-# Enzyme Kinetics Visualization: Puromycin Data Analysis
-
+## Enzyme Kinetics Analysis: Puromycin
 ## Project Overview
 
-A self-directed R project analyzing enzyme-kinetics data from R’s built-in `Puromycin` dataset. The project compares treated and untreated cells using Michaelis–Menten nonlinear regression, Lineweaver–Burk visualization, parameter estimation, descriptive statistics, residual analysis, and root mean square error.
+A self-directed R project analyzing enzyme-kinetics data from R’s built-in Puromycin dataset. The project compares treated and untreated samples using Michaelis–Menten nonlinear regression, Lineweaver–Burk visualization, parameter estimation, descriptive statistics, residual diagnostics, and root mean square error.
 
 ## Features
-
-* Load and analyze R’s built-in `Puromycin` enzyme-kinetics dataset.
-* Fit separate Michaelis–Menten nonlinear regression models for treated and untreated cells.
-* Estimate and compare (V_{\max}) and (K_m) values between treatment groups.
-* Generate Michaelis–Menten and Lineweaver–Burk plots.
-* Calculate descriptive statistics and 95% confidence intervals for mean substrate concentration and reaction rate.
-* Evaluate model fit using residual plots and root mean square error.
-* Produce publication-style visualizations using `ggplot2`.
+Load and analyze R’s built-in Puromycin enzyme-kinetics dataset.
+Fit separate Michaelis–Menten nonlinear regression models for treated and untreated samples.
+Estimate and compare (V_{\max}) and (K_m) values between treatment groups.
+Calculate 95% confidence intervals for fitted (V_{\max}) and (K_m) parameters.
+Generate Michaelis–Menten and Lineweaver–Burk plots.
+Calculate descriptive statistics for substrate concentration and reaction rate.
+Evaluate model fit using residual diagnostics and root mean square error.
+Produce clearly labeled scientific visualizations using ggplot2.
 
 ## Michaelis–Menten Plot Puromycin
 
