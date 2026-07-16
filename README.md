@@ -4,9 +4,9 @@
 Self-directed project emphasizing statistical analysis and visualization of enzyme kinetic relationship and behavior surrounding Puromycin
 
 ## Features
-* Process enzyme kinetics data from public databases.
+* Process enzyme kinetics data from 'datasetes' package.
 * Generate accurate Lineweaver-Burk & Michaelis-Menten plots to visualize reaction rates.
-* Compute 95% confidence inverval for pharmacokinetic parameters (Vmax, Km).
+* Compute 95% confidence inverval for enzyme-kinetic parameters (Vmax, Km).
 
 ## Michaelis–Menten Plot Puromycin
 
