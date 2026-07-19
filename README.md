@@ -13,6 +13,28 @@ A self-directed R project analyzing enzyme-kinetics data from R’s built-in Pur
 * Evaluate model fit using residual diagnostics and root mean square error.
 * Produce clearly labeled scientific visualizations using ggplot2.
 
+## puromycin-kinetics/
+├── README.md
+├── LICENSE
+├── .gitignore
+├── puromycin-kinetics.Rproj
+├── renv.lock
+├── data/
+│   ├── raw/
+│   └── processed/
+├── R/
+│   ├── data_cleaning.R
+│   ├── modeling.R
+│   └── plotting.R
+├── scripts/
+│   └── run_analysis.R
+├── config/
+│   └── config.yml
+├── results/
+│   ├── tables/
+│   └── model_outputs/
+└── figures/
+
 ## Michaelis–Menten Plot Puromycin
 
 ![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
