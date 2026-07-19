@@ -6,8 +6,8 @@ A self-directed R project analyzing enzyme-kinetics data from R’s built-in Pur
 ## Features
 * Load and analyze R’s built-in Puromycin enzyme-kinetics dataset.
 * Fit separate Michaelis–Menten nonlinear regression models for treated and untreated samples.
-* Estimate and compare (Vmax}) and (Km) values between treatment groups.
-* Calculate 95% confidence intervals for fitted (Vmax}) and (Km) parameters.
+* Estimate and compare Vmax and Km values between treatment groups.
+* Calculate 95% confidence intervals for fitted Vmax and Km parameters.
 * Generate Michaelis–Menten and Lineweaver–Burk plots.
 * Calculate descriptive statistics for substrate concentration and reaction rate.
 * Evaluate model fit using residual diagnostics and root mean square error.
