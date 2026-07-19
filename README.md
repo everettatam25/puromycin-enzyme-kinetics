@@ -38,7 +38,7 @@ puromycin-enzyme-kinetics/
 
 ![Lineweaver-Burk Plot](figures/puromycin_lineweaver_burk.png)
 
-## Concentratoin Boxplot Puromycin
+## Concentration Boxplot Puromycin
 
 ![Concentration Boxplot](figures/puromycin_conc_boxplot.png)
 
