@@ -41,27 +41,27 @@ puromycin-kinetics/
 
 ## Michaelis–Menten Plot Puromycin
 
-![Michaelis-Menten Plot](puromycin_michaelis_menten.png)
+![Michaelis-Menten Plot](figures/puromycin_michaelis_menten.png)
 
 ## Lineweaver–Burk Plot Puromycin
 
-![Lineweaver-Burk Plot](puromycin_lineweaver_burk.png)
+![Lineweaver-Burk Plot](figures/puromycin_lineweaver_burk.png)
 
 ## Concentratoin Boxplot Puromycin
 
-![Concentration Boxplot](puromycin_conc_boxplot.png)
+![Concentration Boxplot](figures/puromycin_conc_boxplot.png)
 
 ## Rate Boxplot Puromycin
 
-![Rate Boxplot](puromycin_rate_boxplot.png)
+![Rate Boxplot](figures/puromycin_rate_boxplot.png)
 
 ## Vmax and Km Parameters Puromycin
 
-![Vmax and Km Parameters](puromycin_vmax_km_parameters.png)
+![Vmax and Km Parameters](figures/puromycin_vmax_km_parameters.png)
 
 ## Puromycin Michaelis-Menten Residual Plot
 
-![Michaelis Menten Residual Plot](puromycin_residuals.png)
+![Michaelis Menten Residual Plot](figures/puromycin_residuals.png)
 
 ## Technologies & Tools
 * **Language:** R
