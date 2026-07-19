@@ -13,7 +13,7 @@ A self-directed R project analyzing enzyme-kinetics data from R’s built-in Pur
 * Evaluate model fit using residual diagnostics and root mean square error.
 * Produce clearly labeled scientific visualizations using ggplot2.
 
-## ## Project Structure
+## Project Structure
 
 ```text
 puromycin-kinetics/
