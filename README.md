@@ -16,27 +16,12 @@ A self-directed R project analyzing enzyme-kinetics data from R’s built-in Pur
 ## ## Project Structure
 
 ```text
-puromycin-kinetics/
+puromycin-enzyme-kinetics-main/
 ├── README.md
-├── LICENSE
-├── .gitignore
-├── puromycin-kinetics.Rproj
-├── renv.lock
-├── data/
-│   ├── raw/
-│   └── processed/
+├── figures/
 ├── R/
-│   ├── data_cleaning.R
-│   ├── modeling.R
-│   └── plotting.R
-├── scripts/
-│   └── run_analysis.R
-├── config/
-│   └── config.yml
-├── results/
-│   ├── tables/
-│   └── model_outputs/
-└── figures/
+│   └── puromycin_analysis.R
+└── puromycin-enzyme-kinetics-main.Rproj
 ```
 
 ## Michaelis–Menten Plot Puromycin
