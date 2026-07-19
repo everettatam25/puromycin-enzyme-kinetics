@@ -56,7 +56,7 @@ puromycin-enzyme-kinetics/
 
 ## Technologies & Tools
 * **Language:** R
-* **Libraries:** `ggplot2` (for visualization), `tidyverse` (for database), `dplyr` (for data manipulation)
+* **Libraries:** `ggplot2` (for visualization), `tibble` (for creating structured tables), `dplyr` (for data manipulation)
 * **Environment:** RStudio 
 
 ## Prerequisites
